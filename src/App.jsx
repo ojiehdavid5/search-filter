@@ -7,7 +7,10 @@ import {Users} from './users'
 
 function App() {
   const [query, setQuery] = useState("")
-  // console.log(Users.filter(user=>user.first_name.toLowerCase().includes(query)));
+  const keys=["first_name","last_name","email"];
+
+  // console.log(Users[120]["email"])
+  console.log(Users.filter(user=>keys.some((key)=> user[key].toLowerCase().includes(query))));
 
   return (
     <>
