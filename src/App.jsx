@@ -13,6 +13,9 @@ function App() {
   const [data,setData]=useState([]);
 
   console.log[data];
+
+
+  
   
   // const keys=["first_name","last_name","email"];
 
