@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Table = ({data,query}) => {
+const Table = ({data}) => {
+  console.log(data)
   return (
     <table>
         <tbody>
@@ -9,7 +10,7 @@ const Table = ({data,query}) => {
                 <th>SurName</th>
                 <th>Email</th>
             </tr>
-            {data.filter(user=>user.first_name.toLowerCase().includes(query) || user.last_name.toLowerCase().includes(query) || user.email.toLowerCase().includes(query)).map((user)=>(
+            {data.map((user)=>(
 
 <tr key={user.id}>
 <td>{user.first_name}</td>
