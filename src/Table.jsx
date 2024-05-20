@@ -1,28 +1,12 @@
 import React from 'react'
+import{Users}  from  './users'
 
-const Table = ({data}) => {
-  console.log(data)
+const Table = () => {
   return (
-    <table>
-        <tbody>
-            <tr>
-                <th>Name</th>
-                <th>SurName</th>
-                <th>Email</th>
-            </tr>
-            {data.map((user)=>(
+    <div>
+     
 
-<tr key={user.id}>
-<td>{user.first_name}</td>
-            <td>{user.last_name}</td>
-            <td>{user.email}</td>
-
-</tr>
-            ))}
-
-        </tbody>
-      
-    </table>
+    </div>
   )
 }
 
