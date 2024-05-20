@@ -7000,3 +7000,5 @@ export const Users = [
       "gender": "Female",
     }
   ]
+
+  export default Users;
