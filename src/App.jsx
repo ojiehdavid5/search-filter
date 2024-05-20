@@ -1,60 +1,72 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import './index.css'
-import Table from './Table'
+import React from 'react'
+import {useState,useEffect} from 'react';
+import "./App.css";
 import axios from 'axios';
 
-// import {Users} from './users'
-
-function App() {
-  const [query, setQuery] = useState("")
 
 
+const App = () => {
+
+    
   const [data,setData]=useState([]);
 
-  console.log[data];
-
-
-  
-  
-  // const keys=["first_name","last_name","email"];
 
   useEffect(()=>{
-    const fetchUsers=async()=>{
-      const res =axios.get('http://localhost:5000')
+    const fetchData=async()=>{
+      const res= await axios.get('http://localhost:5000');
       setData(res.data)
+      // console.log(res.data)
 
+      
+
+    
     }
+    fetchData();
+  },[])
 
-   fetchUsers();
-  },
-  [])
+    const [query,setQuery]=useState("");
 
-  // console.log(Users[120]["email"])
-  // console.log(Users.filter(user=>keys.some((key)=> user[key].toLowerCase().includes(query))));
+
 
   return (
-    <>
-     <div className="app flex  item-center justify-center ml-[20rem]">
-      <input type="text" placeholder='Search' className='search' name="" id=""
-      onChange={(e)=>{setQuery(e.target.value).toLowerCase()}}
-      />
+    <div className='app ml-[15rem]'>
 
-     {/* {<Table
-      data={[data]}
+      <input
+       type='text' 
+       placeholder='Search'
+        className='search'
+        value={query}
+        onChange={(e)=>{setQuery(e.target.value)}}
+        
+        />
+
+
+<table>
+<tr className='mb-9'>
+   <th>firstname</th>
+   <th>lastname</th>
+   <th>email</th>
+ </tr>
+  {data.filter((item)=> item.first_name.toLowerCase().includes(query)).map(user=>(
+ <tbody>
+ 
+ <tr  key={user.id} className='mt-9'>
+
+   <th>{user.first_name}</th>
+   <th>{user.last_name}</th>
+   <th>{user.email}</th>
+ </tr>
+
+
+</tbody>
+  ))}
+ 
+</table> 
+
+
+
       
-      /> */}
-// //
-
-      {/* <ul className="list">
-        {Users.filter(user=>user.first_name.toLowerCase().includes(query)).map((user)=>(
-                  <li className="listItem">{user.first_name}</li>
-
-        ))}
-      
-      </ul> */}
-     </div>
-    </>
+    </div>
   )
 }
 
